@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "f4cf1dbc-f2ae-4c7f-b74d-9d6fa92b72c2": {
+      "ProjectGuid": "f4cf1dbc-f2ae-4c7f-b74d-9d6fa92b72c2",
+      "DisplayName": "Проводник",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
