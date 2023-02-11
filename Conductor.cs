@@ -9,8 +9,7 @@ namespace Проводник
 {
     public class Conductor
     {
-        private static int elem = Cursor.ymarg - 5;
-
+        private static int elem;
         public static void Interface()
         {
             Console.SetCursorPosition(55, 0);
@@ -34,7 +33,7 @@ namespace Проводник
             var directory = new DirectoryInfo(driveName);
             DirectoryInfo[] dirs = directory.GetDirectories();
 
-            Cursor.Change();
+            elem = Cursor.Change();
             Console.Clear();
 
 
@@ -74,15 +73,18 @@ namespace Проводник
                 }
                 menu++;
             }
-            Cursor.Change();
-            Console.Clear();
 
-            Cursor.Change();
-            string dirName = "C:\\";
-            var directory2 = new DirectoryInfo(dirName);
-            DirectoryInfo[] dirs2 = directory2.GetDirectories();
+            elem = Cursor.Change();
+
+            Console.Clear();
+            string dirName = $"{dirs[elem]}";
             while (true)
             {
+
+
+
+                var directory2 = new DirectoryInfo(dirName);
+                DirectoryInfo[] dirs2 = directory2.GetDirectories();
                 if (Cursor.key.Key == ConsoleKey.Enter && menu > 1)
                 {
                     int d = 5;
@@ -94,9 +96,9 @@ namespace Проводник
                             Console.WriteLine(dir.Name);
                             Console.SetCursorPosition(40, d);
                             Console.WriteLine(dir.CreationTime);
-                            b++;
+                            d++;
                         }
-                        FileInfo[] files = directory.GetFiles();
+                        FileInfo[] files = directory2.GetFiles();
                         foreach (FileInfo file in files)
                         {
                             Console.SetCursorPosition(3, d);
@@ -105,10 +107,10 @@ namespace Проводник
                             Console.WriteLine(file.CreationTime);
                             Console.SetCursorPosition(65, d);
                             Console.WriteLine(file.Extension);
-                            b++;
+                            d++;
                         }
                         Console.SetCursorPosition(55, 0);
-                        Console.WriteLine($"Папка  {dirs2[elem].Name}");
+                        Console.WriteLine($"Папка  {dirs[elem].Name}");
                         Console.SetCursorPosition(10, 3);
                         Console.WriteLine("Название");
                         Console.SetCursorPosition(45, 3);
@@ -116,20 +118,21 @@ namespace Проводник
                         Console.WriteLine("-------------------------------------------------------------------------------------------------------------");
                         Console.SetCursorPosition(60, 3);
                         Console.WriteLine("Тип");
+
+
                     }
 
 
-                    dirName = $"{dirs2[elem]}";
-
-
-
-
-
-
-
                 }
+                Cursor.ymarg = 5;
+                elem = Cursor.Change();
+                dirName = $"{dirs2[elem]}";
+                dirs = dirs2;
+
+                Console.Clear();
+
             }
-            
+
 
         }
     }

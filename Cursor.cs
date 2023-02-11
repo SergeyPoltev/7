@@ -13,7 +13,7 @@ namespace Проводник
         public static int ymarg = 5;
         public static int change = 1;
         public static ConsoleKeyInfo key;
-         public static void Change()
+         public static int Change()
         {
             Console.SetCursorPosition(xmarg, ymarg);
             Console.WriteLine("->");
@@ -41,12 +41,17 @@ namespace Проводник
                     Console.WriteLine("->");
                     ymarg++;
                 }
-                if(key.Key == ConsoleKey.Enter)
+                if (key.Key == ConsoleKey.Escape)
+                {
+                    Console.Clear();
+                    Environment.Exit(0);
+                }
+                if (key.Key == ConsoleKey.Enter)
                 {
                     break;
                 }
             }
-           
+            return ymarg-6;
         }
     }
 }
